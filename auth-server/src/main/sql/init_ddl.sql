@@ -35,7 +35,7 @@ CREATE TABLE osiam_client (
     internal_id bigint NOT NULL AUTO_INCREMENT,
     accesstokenvalidityseconds integer NOT NULL,
     client_secret character varying(255) NOT NULL,
-    expiry timestamp,
+    expiry timestamp NULL,
     id character varying(32) NOT NULL,
     implicit_approval boolean NOT NULL,
     redirect_uri text NOT NULL,
