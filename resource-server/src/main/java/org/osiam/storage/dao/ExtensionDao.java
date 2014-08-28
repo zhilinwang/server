@@ -23,7 +23,11 @@
 
 package org.osiam.storage.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -34,6 +38,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.osiam.resources.converter.ExtensionConverter;
 import org.osiam.resources.exceptions.OsiamException;
 import org.osiam.storage.entities.ExtensionEntity;
 import org.osiam.storage.entities.ExtensionEntity_;
@@ -46,7 +51,7 @@ public class ExtensionDao {
 
     /**
      * Retrieves the extension with the given URN from the database. The URN is case-sensitive.
-     * 
+     *
      * @param urn
      *        The URN of the extension to look up
      * @return the extension entity
@@ -57,7 +62,7 @@ public class ExtensionDao {
 
     /**
      * Retrieves the extension with the given URN from the database
-     * 
+     *
      * @param urn
      *        the URN of the extension to look up
      * @param caseInsensitive
@@ -89,6 +94,25 @@ public class ExtensionDao {
         }
 
         return singleExtension;
+    }
+
+    /**
+     * Get all stored extensions.
+     *
+     * @return all extensions.
+     */
+    public List<ExtensionEntity> getAllExtensions(){
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<ExtensionEntity> cq = cb.createQuery(ExtensionEntity.class);
+        Root<ExtensionEntity> extension = cq.from(ExtensionEntity.class);
+
+        cq.select(extension);
+        TypedQuery<ExtensionEntity> query = em.createQuery(cq);
+
+        //to prevent lacy loading we must put it into a new List
+        List<ExtensionEntity> result = new ArrayList<>(query.getResultList());
+
+        return result;
     }
 
 }
