@@ -6,12 +6,12 @@
 -- Dumped by pg_dump version 9.3.1
 -- Started on 2014-04-30 15:18:46 CEST
 
-SET statement_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET default_with_oids = false;
+-- SET statement_timeout = 0;
+-- SET client_encoding = 'UTF8';
+-- SET standard_conforming_strings = on;
+-- SET check_function_bodies = false;
+-- SET client_min_messages = warning;
+-- SET default_with_oids = false;
 
 
 --
@@ -19,12 +19,12 @@ SET default_with_oids = false;
 -- Name: resource_server_sequence_scim_extension; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE resource_server_sequence_scim_extension
-    START WITH 100
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+-- CREATE SEQUENCE resource_server_sequence_scim_extension
+--     START WITH 100
+--     INCREMENT BY 1
+--     NO MINVALUE
+--     NO MAXVALUE
+--     CACHE 1;
 
 
 --
@@ -32,12 +32,12 @@ CREATE SEQUENCE resource_server_sequence_scim_extension
 -- Name: resource_server_sequence_scim_extension_field; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE resource_server_sequence_scim_extension_field
-    START WITH 100
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+-- CREATE SEQUENCE resource_server_sequence_scim_extension_field
+--     START WITH 100
+--     INCREMENT BY 1
+--     NO MINVALUE
+--     NO MAXVALUE
+--     CACHE 1;
 
 
 --
@@ -45,12 +45,12 @@ CREATE SEQUENCE resource_server_sequence_scim_extension_field
 -- Name: resource_server_sequence_scim_extension_field_value; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE resource_server_sequence_scim_extension_field_value
-    START WITH 100
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+-- CREATE SEQUENCE resource_server_sequence_scim_extension_field_value
+--     START WITH 100
+--     INCREMENT BY 1
+--     NO MINVALUE
+--     NO MAXVALUE
+--     CACHE 1;
 
 
 --
@@ -58,12 +58,12 @@ CREATE SEQUENCE resource_server_sequence_scim_extension_field_value
 -- Name: resource_server_sequence_scim_id; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE resource_server_sequence_scim_id
-    START WITH 100
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+-- CREATE SEQUENCE resource_server_sequence_scim_id
+--     START WITH 100
+--     INCREMENT BY 1
+--     NO MINVALUE
+--     NO MAXVALUE
+--     CACHE 1;
 
 
 --
@@ -71,12 +71,12 @@ CREATE SEQUENCE resource_server_sequence_scim_id
 -- Name: resource_server_sequence_scim_meta; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE resource_server_sequence_scim_meta
-    START WITH 100
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+-- CREATE SEQUENCE resource_server_sequence_scim_meta
+--     START WITH 100
+--     INCREMENT BY 1
+--     NO MINVALUE
+--     NO MAXVALUE
+--     CACHE 1;
 
 
 --
@@ -84,12 +84,12 @@ CREATE SEQUENCE resource_server_sequence_scim_meta
 -- Name: resource_server_sequence_scim_multi_valued_attribute; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE resource_server_sequence_scim_multi_valued_attribute
-    START WITH 100
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+-- CREATE SEQUENCE resource_server_sequence_scim_multi_valued_attribute
+--     START WITH 100
+--     INCREMENT BY 1
+--     NO MINVALUE
+--     NO MAXVALUE
+--     CACHE 1;
 
 
 --
@@ -97,12 +97,12 @@ CREATE SEQUENCE resource_server_sequence_scim_multi_valued_attribute
 -- Name: resource_server_sequence_scim_name; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE resource_server_sequence_scim_name
-    START WITH 100
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+-- CREATE SEQUENCE resource_server_sequence_scim_name
+--     START WITH 100
+--     INCREMENT BY 1
+--     NO MINVALUE
+--     NO MAXVALUE
+--     CACHE 1;
 
 
 --
@@ -260,8 +260,8 @@ CREATE TABLE scim_im (
 
 CREATE TABLE scim_meta (
     id bigint NOT NULL,
-    created timestamp without time zone,
-    lastmodified timestamp without time zone,
+    created timestamp NULL,
+    lastmodified timestamp NULL,
     location text,
     resourcetype character varying(255),
     version character varying(255)
@@ -353,7 +353,7 @@ CREATE TABLE scim_user (
 -- Name: scim_address_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_address
+ALTER TABLE scim_address
     ADD CONSTRAINT scim_address_pkey PRIMARY KEY (multi_value_id);
 
 
@@ -362,7 +362,7 @@ ALTER TABLE ONLY scim_address
 -- Name: scim_certificate_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_certificate
+ALTER TABLE scim_certificate
     ADD CONSTRAINT scim_certificate_pkey PRIMARY KEY (multi_value_id);
 
 
@@ -371,7 +371,7 @@ ALTER TABLE ONLY scim_certificate
 -- Name: scim_email_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_email
+ALTER TABLE scim_email
     ADD CONSTRAINT scim_email_pkey PRIMARY KEY (multi_value_id);
 
 
@@ -380,7 +380,7 @@ ALTER TABLE ONLY scim_email
 -- Name: scim_entitlements_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_entitlements
+ALTER TABLE scim_entitlements
     ADD CONSTRAINT scim_entitlements_pkey PRIMARY KEY (multi_value_id);
 
 
@@ -389,7 +389,7 @@ ALTER TABLE ONLY scim_entitlements
 -- Name: scim_extension_field_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_extension_field
+ALTER TABLE scim_extension_field
     ADD CONSTRAINT scim_extension_field_pkey PRIMARY KEY (internal_id);
 
 
@@ -398,7 +398,7 @@ ALTER TABLE ONLY scim_extension_field
 -- Name: scim_extension_field_value_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_extension_field_value
+ALTER TABLE scim_extension_field_value
     ADD CONSTRAINT scim_extension_field_value_pkey PRIMARY KEY (internal_id);
 
 
@@ -407,7 +407,7 @@ ALTER TABLE ONLY scim_extension_field_value
 -- Name: scim_extension_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_extension
+ALTER TABLE scim_extension
     ADD CONSTRAINT scim_extension_pkey PRIMARY KEY (internal_id);
 
 
@@ -416,7 +416,7 @@ ALTER TABLE ONLY scim_extension
 -- Name: scim_group_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_group
+ALTER TABLE scim_group
     ADD CONSTRAINT scim_group_pkey PRIMARY KEY (internal_id);
 
 
@@ -425,7 +425,7 @@ ALTER TABLE ONLY scim_group
 -- Name: scim_group_scim_id_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_group_scim_id
+ALTER TABLE scim_group_scim_id
     ADD CONSTRAINT scim_group_scim_id_pkey PRIMARY KEY (groups_internal_id, members_internal_id);
 
 
@@ -434,7 +434,7 @@ ALTER TABLE ONLY scim_group_scim_id
 -- Name: scim_id_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_id
+ALTER TABLE scim_id
     ADD CONSTRAINT scim_id_pkey PRIMARY KEY (internal_id);
 
 
@@ -443,7 +443,7 @@ ALTER TABLE ONLY scim_id
 -- Name: scim_im_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_im
+ALTER TABLE scim_im
     ADD CONSTRAINT scim_im_pkey PRIMARY KEY (multi_value_id);
 
 
@@ -452,7 +452,7 @@ ALTER TABLE ONLY scim_im
 -- Name: scim_meta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_meta
+ALTER TABLE scim_meta
     ADD CONSTRAINT scim_meta_pkey PRIMARY KEY (id);
 
 
@@ -461,7 +461,7 @@ ALTER TABLE ONLY scim_meta
 -- Name: scim_name_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_name
+ALTER TABLE scim_name
     ADD CONSTRAINT scim_name_pkey PRIMARY KEY (id);
 
 
@@ -470,7 +470,7 @@ ALTER TABLE ONLY scim_name
 -- Name: scim_phonenumber_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_phonenumber
+ALTER TABLE scim_phonenumber
     ADD CONSTRAINT scim_phonenumber_pkey PRIMARY KEY (multi_value_id);
 
 
@@ -479,7 +479,7 @@ ALTER TABLE ONLY scim_phonenumber
 -- Name: scim_photo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_photo
+ALTER TABLE scim_photo
     ADD CONSTRAINT scim_photo_pkey PRIMARY KEY (multi_value_id);
 
 
@@ -488,7 +488,7 @@ ALTER TABLE ONLY scim_photo
 -- Name: scim_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_roles
+ALTER TABLE scim_roles
     ADD CONSTRAINT scim_roles_pkey PRIMARY KEY (multi_value_id);
 
 
@@ -497,7 +497,7 @@ ALTER TABLE ONLY scim_roles
 -- Name: scim_user_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_user
+ALTER TABLE scim_user
     ADD CONSTRAINT scim_user_pkey PRIMARY KEY (internal_id);
 
 
@@ -506,7 +506,7 @@ ALTER TABLE ONLY scim_user
 -- Name: uk_164dcfif0r82xubvindi9vrnc; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_id
+ALTER TABLE scim_id
     ADD CONSTRAINT uk_164dcfif0r82xubvindi9vrnc UNIQUE (external_id);
 
 
@@ -515,7 +515,7 @@ ALTER TABLE ONLY scim_id
 -- Name: uk_1dt64mbf4gp83rwy18jofwwf; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_group
+ALTER TABLE scim_group
     ADD CONSTRAINT uk_1dt64mbf4gp83rwy18jofwwf UNIQUE (displayname);
 
 
@@ -524,7 +524,7 @@ ALTER TABLE ONLY scim_group
 -- Name: uk_1onynolltgwuk8a5ngjhkqcl1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_user
+ALTER TABLE scim_user
     ADD CONSTRAINT uk_1onynolltgwuk8a5ngjhkqcl1 UNIQUE (username);
 
 
@@ -533,8 +533,8 @@ ALTER TABLE ONLY scim_user
 -- Name: uk_60sysrrwavtwwnji8nw5tng2x; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_extension
-    ADD CONSTRAINT uk_60sysrrwavtwwnji8nw5tng2x UNIQUE (urn);
+ALTER TABLE scim_extension
+    ADD CONSTRAINT uk_60sysrrwavtwwnji8nw5tng2x UNIQUE (urn(767));
 
 
 --
@@ -542,7 +542,7 @@ ALTER TABLE ONLY scim_extension
 -- Name: uk_9rvm7w04q503y4gx9q0c55cnv; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_extension_field
+ALTER TABLE scim_extension_field
     ADD CONSTRAINT uk_9rvm7w04q503y4gx9q0c55cnv UNIQUE (extension_internal_id, name);
 
 
@@ -551,7 +551,7 @@ ALTER TABLE ONLY scim_extension_field
 -- Name: uk_q4ya5m8v6tafgtvw1inqtmm42; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_id
+ALTER TABLE scim_id
     ADD CONSTRAINT uk_q4ya5m8v6tafgtvw1inqtmm42 UNIQUE (id);
 
 
@@ -560,15 +560,14 @@ ALTER TABLE ONLY scim_id
 -- Name: uk_1b0o2foyw6nainc2vrssxkok0; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_1b0o2foyw6nainc2vrssxkok0 ON scim_meta USING btree (lastmodified);
-
+CREATE INDEX uk_1b0o2foyw6nainc2vrssxkok0 USING btree ON scim_meta (lastmodified);
 
 --
 -- TOC entry 2263 (class 1259 OID 109091)
 -- Name: uk_1er38kw2ith4ewuf7b5rhh7br; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_1er38kw2ith4ewuf7b5rhh7br ON scim_photo USING btree (type);
+CREATE INDEX uk_1er38kw2ith4ewuf7b5rhh7br USING btree ON scim_photo (type);
 
 
 --
@@ -576,7 +575,7 @@ CREATE INDEX uk_1er38kw2ith4ewuf7b5rhh7br ON scim_photo USING btree (type);
 -- Name: uk_1o8kevc2e2hfk24f19j3vcia4; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_1o8kevc2e2hfk24f19j3vcia4 ON scim_meta USING btree (created);
+CREATE INDEX uk_1o8kevc2e2hfk24f19j3vcia4 USING btree ON scim_meta (created);
 
 
 --
@@ -584,15 +583,14 @@ CREATE INDEX uk_1o8kevc2e2hfk24f19j3vcia4 ON scim_meta USING btree (created);
 -- Name: uk_31njuvoulynkorup0b5pjqni6; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_31njuvoulynkorup0b5pjqni6 ON scim_im USING btree (value);
-
+CREATE INDEX uk_31njuvoulynkorup0b5pjqni6 USING btree ON scim_im (value(767));
 
 --
 -- TOC entry 2205 (class 1259 OID 109061)
 -- Name: uk_3hqwl74jwjq0dksv2t4iqlptm; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_3hqwl74jwjq0dksv2t4iqlptm ON scim_address USING btree (country, region, locality, postalcode, streetaddress);
+CREATE INDEX uk_3hqwl74jwjq0dksv2t4iqlptm  USING btree ON scim_address (country, region, locality, postalcode, streetaddress);
 
 
 --
@@ -600,7 +598,7 @@ CREATE INDEX uk_3hqwl74jwjq0dksv2t4iqlptm ON scim_address USING btree (country, 
 -- Name: uk_6y89p0fpcdcg2fq9k5u8h1173; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_6y89p0fpcdcg2fq9k5u8h1173 ON scim_photo USING btree (value);
+CREATE INDEX uk_6y89p0fpcdcg2fq9k5u8h1173 USING btree ON scim_photo (value(767));
 
 
 --
@@ -608,7 +606,7 @@ CREATE INDEX uk_6y89p0fpcdcg2fq9k5u8h1173 ON scim_photo USING btree (value);
 -- Name: uk_75wo1phhovp2nbruh2dmfhcwk; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_75wo1phhovp2nbruh2dmfhcwk ON scim_entitlements USING btree (type);
+CREATE INDEX uk_75wo1phhovp2nbruh2dmfhcwk USING btree ON scim_entitlements (type);
 
 
 --
@@ -616,7 +614,7 @@ CREATE INDEX uk_75wo1phhovp2nbruh2dmfhcwk ON scim_entitlements USING btree (type
 -- Name: uk_7k7tc0du5jucy4ranqn8uid4b; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_7k7tc0du5jucy4ranqn8uid4b ON scim_certificate USING btree (type);
+CREATE INDEX uk_7k7tc0du5jucy4ranqn8uid4b USING btree ON scim_certificate (type);
 
 
 --
@@ -624,7 +622,7 @@ CREATE INDEX uk_7k7tc0du5jucy4ranqn8uid4b ON scim_certificate USING btree (type)
 -- Name: uk_88yyj57g5nisgp2trhs2yqa91; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_88yyj57g5nisgp2trhs2yqa91 ON scim_im USING btree (type);
+CREATE INDEX uk_88yyj57g5nisgp2trhs2yqa91 USING btree ON scim_im (type);
 
 
 --
@@ -632,7 +630,7 @@ CREATE INDEX uk_88yyj57g5nisgp2trhs2yqa91 ON scim_im USING btree (type);
 -- Name: uk_8qwt29ewjm8urpi7vk10q2fb3; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_8qwt29ewjm8urpi7vk10q2fb3 ON scim_roles USING btree (type);
+CREATE INDEX uk_8qwt29ewjm8urpi7vk10q2fb3 USING btree ON scim_roles (type);
 
 
 --
@@ -640,7 +638,7 @@ CREATE INDEX uk_8qwt29ewjm8urpi7vk10q2fb3 ON scim_roles USING btree (type);
 -- Name: uk_8snvn02x0for0fvcj8erir2k0; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_8snvn02x0for0fvcj8erir2k0 ON scim_email USING btree (value);
+CREATE INDEX uk_8snvn02x0for0fvcj8erir2k0 USING btree ON scim_email (value(767));
 
 
 --
@@ -648,7 +646,7 @@ CREATE INDEX uk_8snvn02x0for0fvcj8erir2k0 ON scim_email USING btree (value);
 -- Name: uk_abrc9lbp52g1b16x0dwtd5nld; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_abrc9lbp52g1b16x0dwtd5nld ON scim_phonenumber USING btree (value);
+CREATE INDEX uk_abrc9lbp52g1b16x0dwtd5nld USING btree ON scim_phonenumber (value(767));
 
 
 --
@@ -656,7 +654,7 @@ CREATE INDEX uk_abrc9lbp52g1b16x0dwtd5nld ON scim_phonenumber USING btree (value
 -- Name: uk_da192a97ita9ygqdlmabnf4bw; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_da192a97ita9ygqdlmabnf4bw ON scim_im USING btree (value, type);
+CREATE INDEX uk_da192a97ita9ygqdlmabnf4bw USING btree ON scim_im (value(767), type);
 
 
 --
@@ -664,7 +662,7 @@ CREATE INDEX uk_da192a97ita9ygqdlmabnf4bw ON scim_im USING btree (value, type);
 -- Name: uk_e7hqv692l3lm558s16p1l5acm; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_e7hqv692l3lm558s16p1l5acm ON scim_phonenumber USING btree (type);
+CREATE INDEX uk_e7hqv692l3lm558s16p1l5acm USING btree ON scim_phonenumber (type);
 
 
 --
@@ -672,7 +670,7 @@ CREATE INDEX uk_e7hqv692l3lm558s16p1l5acm ON scim_phonenumber USING btree (type)
 -- Name: uk_eplkwvpox52tjppj9oogkf6f2; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_eplkwvpox52tjppj9oogkf6f2 ON scim_certificate USING btree (value, type);
+CREATE INDEX uk_eplkwvpox52tjppj9oogkf6f2 USING btree ON scim_certificate (value(767), type);
 
 
 --
@@ -680,7 +678,7 @@ CREATE INDEX uk_eplkwvpox52tjppj9oogkf6f2 ON scim_certificate USING btree (value
 -- Name: uk_hvpieto01a5c7b5edr1v9pom4; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_hvpieto01a5c7b5edr1v9pom4 ON scim_email USING btree (type);
+CREATE INDEX uk_hvpieto01a5c7b5edr1v9pom4 USING btree ON scim_email (type);
 
 
 --
@@ -688,7 +686,7 @@ CREATE INDEX uk_hvpieto01a5c7b5edr1v9pom4 ON scim_email USING btree (type);
 -- Name: uk_i0njmun17yqq9eslmg7dqehrf; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_i0njmun17yqq9eslmg7dqehrf ON scim_entitlements USING btree (value, type);
+CREATE INDEX uk_i0njmun17yqq9eslmg7dqehrf USING btree ON scim_entitlements (value(767), type);
 
 
 --
@@ -696,7 +694,7 @@ CREATE INDEX uk_i0njmun17yqq9eslmg7dqehrf ON scim_entitlements USING btree (valu
 -- Name: uk_i7n6iwn2x3stgn9q515xn46gi; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_i7n6iwn2x3stgn9q515xn46gi ON scim_roles USING btree (value, type);
+CREATE INDEX uk_i7n6iwn2x3stgn9q515xn46gi USING btree ON scim_roles (value(767), type);
 
 
 --
@@ -704,7 +702,7 @@ CREATE INDEX uk_i7n6iwn2x3stgn9q515xn46gi ON scim_roles USING btree (value, type
 -- Name: uk_iculqbamgtumwnjyjxseafy5h; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_iculqbamgtumwnjyjxseafy5h ON scim_photo USING btree (value, type);
+CREATE INDEX uk_iculqbamgtumwnjyjxseafy5h USING btree ON scim_photo (value(767), type);
 
 
 --
@@ -712,7 +710,7 @@ CREATE INDEX uk_iculqbamgtumwnjyjxseafy5h ON scim_photo USING btree (value, type
 -- Name: uk_ie5406dj1t9i0f9hytgvbxjl2; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_ie5406dj1t9i0f9hytgvbxjl2 ON scim_address USING btree (type);
+CREATE INDEX uk_ie5406dj1t9i0f9hytgvbxjl2 USING btree ON scim_address (type);
 
 
 --
@@ -720,7 +718,7 @@ CREATE INDEX uk_ie5406dj1t9i0f9hytgvbxjl2 ON scim_address USING btree (type);
 -- Name: uk_ipfxts8e4ofm3oo5djk40pv86; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_ipfxts8e4ofm3oo5djk40pv86 ON scim_phonenumber USING btree (value, type);
+CREATE INDEX uk_ipfxts8e4ofm3oo5djk40pv86 USING btree ON scim_phonenumber (value(767), type);
 
 
 --
@@ -728,7 +726,7 @@ CREATE INDEX uk_ipfxts8e4ofm3oo5djk40pv86 ON scim_phonenumber USING btree (value
 -- Name: uk_j86m6mxppkb3g2vx72a11xob1; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_j86m6mxppkb3g2vx72a11xob1 ON scim_email USING btree (value, type);
+CREATE INDEX uk_j86m6mxppkb3g2vx72a11xob1 USING btree ON scim_email (value(767), type);
 
 
 --
@@ -736,7 +734,7 @@ CREATE INDEX uk_j86m6mxppkb3g2vx72a11xob1 ON scim_email USING btree (value, type
 -- Name: uk_mw914wc9rj4qsue2q60n4ktk4; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_mw914wc9rj4qsue2q60n4ktk4 ON scim_roles USING btree (value);
+CREATE INDEX uk_mw914wc9rj4qsue2q60n4ktk4 USING btree ON scim_roles (value(767));
 
 
 --
@@ -744,7 +742,7 @@ CREATE INDEX uk_mw914wc9rj4qsue2q60n4ktk4 ON scim_roles USING btree (value);
 -- Name: uk_nxxhl5vhce96gwm0se9spjjjv; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_nxxhl5vhce96gwm0se9spjjjv ON scim_entitlements USING btree (value);
+CREATE INDEX uk_nxxhl5vhce96gwm0se9spjjjv USING btree ON scim_entitlements (value(767));
 
 
 --
@@ -752,7 +750,7 @@ CREATE INDEX uk_nxxhl5vhce96gwm0se9spjjjv ON scim_entitlements USING btree (valu
 -- Name: uk_p2y10qxtuqdvbl5spxu98akx2; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_p2y10qxtuqdvbl5spxu98akx2 ON scim_extension_field_value USING btree (user_internal_id, extension_field_internal_id);
+CREATE INDEX uk_p2y10qxtuqdvbl5spxu98akx2 USING btree ON scim_extension_field_value (user_internal_id, extension_field_internal_id);
 
 
 --
@@ -760,7 +758,7 @@ CREATE INDEX uk_p2y10qxtuqdvbl5spxu98akx2 ON scim_extension_field_value USING bt
 -- Name: uk_tb6nu6msjqh1qb2ne5e4ghnp0; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX uk_tb6nu6msjqh1qb2ne5e4ghnp0 ON scim_certificate USING btree (value);
+CREATE INDEX uk_tb6nu6msjqh1qb2ne5e4ghnp0 USING btree ON scim_certificate (value(767));
 
 
 --
@@ -768,7 +766,7 @@ CREATE INDEX uk_tb6nu6msjqh1qb2ne5e4ghnp0 ON scim_certificate USING btree (value
 -- Name: fk_6y0v7g2y69nkvody9jv5q3tuo; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_extension_field_value
+ALTER TABLE scim_extension_field_value
     ADD CONSTRAINT fk_6y0v7g2y69nkvody9jv5q3tuo FOREIGN KEY (extension_field_internal_id) REFERENCES scim_extension_field(internal_id);
 
 
@@ -777,7 +775,7 @@ ALTER TABLE ONLY scim_extension_field_value
 -- Name: fk_7jnl5vqcfg1j9plj4py1qvxcp; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_entitlements
+ALTER TABLE scim_entitlements
     ADD CONSTRAINT fk_7jnl5vqcfg1j9plj4py1qvxcp FOREIGN KEY (user_internal_id) REFERENCES scim_user(internal_id);
 
 
@@ -786,7 +784,7 @@ ALTER TABLE ONLY scim_entitlements
 -- Name: fk_b29y2qc2j5uu49wa9grpbulb0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_group_scim_id
+ALTER TABLE scim_group_scim_id
     ADD CONSTRAINT fk_b29y2qc2j5uu49wa9grpbulb0 FOREIGN KEY (members_internal_id) REFERENCES scim_id(internal_id);
 
 
@@ -795,7 +793,7 @@ ALTER TABLE ONLY scim_group_scim_id
 -- Name: fk_byxttqfbmb2wcj4ud3hd53mw3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_id
+ALTER TABLE scim_id
     ADD CONSTRAINT fk_byxttqfbmb2wcj4ud3hd53mw3 FOREIGN KEY (meta_id) REFERENCES scim_meta(id);
 
 
@@ -804,7 +802,7 @@ ALTER TABLE ONLY scim_id
 -- Name: fk_d2ji7ipe62fbg8uu2ir7b9ls4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_user
+ALTER TABLE scim_user
     ADD CONSTRAINT fk_d2ji7ipe62fbg8uu2ir7b9ls4 FOREIGN KEY (name_id) REFERENCES scim_name(id);
 
 
@@ -813,7 +811,7 @@ ALTER TABLE ONLY scim_user
 -- Name: fk_dmfj3s46npn4p1pcrc3iur2mp; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_email
+ALTER TABLE scim_email
     ADD CONSTRAINT fk_dmfj3s46npn4p1pcrc3iur2mp FOREIGN KEY (user_internal_id) REFERENCES scim_user(internal_id);
 
 
@@ -822,7 +820,7 @@ ALTER TABLE ONLY scim_email
 -- Name: fk_eksek96tmtxkaqe5a7hfmoswo; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_extension_field
+ALTER TABLE scim_extension_field
     ADD CONSTRAINT fk_eksek96tmtxkaqe5a7hfmoswo FOREIGN KEY (extension_internal_id) REFERENCES scim_extension(internal_id);
 
 
@@ -831,7 +829,7 @@ ALTER TABLE ONLY scim_extension_field
 -- Name: fk_gct22972jrrv22crorixfdlmi; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_group_scim_id
+ALTER TABLE scim_group_scim_id
     ADD CONSTRAINT fk_gct22972jrrv22crorixfdlmi FOREIGN KEY (groups_internal_id) REFERENCES scim_group(internal_id);
 
 
@@ -840,7 +838,7 @@ ALTER TABLE ONLY scim_group_scim_id
 -- Name: fk_ghdpgmh1b8suimtfxdl8653bj; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_certificate
+ALTER TABLE scim_certificate
     ADD CONSTRAINT fk_ghdpgmh1b8suimtfxdl8653bj FOREIGN KEY (user_internal_id) REFERENCES scim_user(internal_id);
 
 
@@ -849,7 +847,7 @@ ALTER TABLE ONLY scim_certificate
 -- Name: fk_hmsah9dinhk7f8k4lf50h658; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_im
+ALTER TABLE scim_im
     ADD CONSTRAINT fk_hmsah9dinhk7f8k4lf50h658 FOREIGN KEY (user_internal_id) REFERENCES scim_user(internal_id);
 
 
@@ -858,7 +856,7 @@ ALTER TABLE ONLY scim_im
 -- Name: fk_in6gs4safpkntvac3v88ke54r; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_extension_field_value
+ALTER TABLE scim_extension_field_value
     ADD CONSTRAINT fk_in6gs4safpkntvac3v88ke54r FOREIGN KEY (user_internal_id) REFERENCES scim_user(internal_id);
 
 
@@ -867,7 +865,7 @@ ALTER TABLE ONLY scim_extension_field_value
 -- Name: fk_n5und6lnrtblhgs2ococpglyi; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_roles
+ALTER TABLE scim_roles
     ADD CONSTRAINT fk_n5und6lnrtblhgs2ococpglyi FOREIGN KEY (user_internal_id) REFERENCES scim_user(internal_id);
 
 
@@ -876,7 +874,7 @@ ALTER TABLE ONLY scim_roles
 -- Name: fk_nx0839hyqd5yrfelxkr2fpr7a; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_user
+ALTER TABLE scim_user
     ADD CONSTRAINT fk_nx0839hyqd5yrfelxkr2fpr7a FOREIGN KEY (internal_id) REFERENCES scim_id(internal_id);
 
 
@@ -885,7 +883,7 @@ ALTER TABLE ONLY scim_user
 -- Name: fk_oari88x9o5j9jmigtt5s20m4k; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_group
+ALTER TABLE scim_group
     ADD CONSTRAINT fk_oari88x9o5j9jmigtt5s20m4k FOREIGN KEY (internal_id) REFERENCES scim_id(internal_id);
 
 
@@ -894,7 +892,7 @@ ALTER TABLE ONLY scim_group
 -- Name: fk_q3rk61yla08pvod7gq8av7i0l; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_photo
+ALTER TABLE scim_photo
     ADD CONSTRAINT fk_q3rk61yla08pvod7gq8av7i0l FOREIGN KEY (user_internal_id) REFERENCES scim_user(internal_id);
 
 
@@ -903,7 +901,7 @@ ALTER TABLE ONLY scim_photo
 -- Name: fk_qr6gtqi0h9r6yp034tarlry1k; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_address
+ALTER TABLE scim_address
     ADD CONSTRAINT fk_qr6gtqi0h9r6yp034tarlry1k FOREIGN KEY (user_internal_id) REFERENCES scim_user(internal_id);
 
 
@@ -912,7 +910,7 @@ ALTER TABLE ONLY scim_address
 -- Name: fk_rpqvdf1p9twdigaq1wclu5wm8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY scim_phonenumber
+ALTER TABLE scim_phonenumber
     ADD CONSTRAINT fk_rpqvdf1p9twdigaq1wclu5wm8 FOREIGN KEY (user_internal_id) REFERENCES scim_user(internal_id);
 
 
