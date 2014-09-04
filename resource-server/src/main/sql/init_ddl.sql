@@ -172,8 +172,9 @@ CREATE TABLE scim_entitlements (
 --
 
 CREATE TABLE scim_extension (
-    internal_id bigint NOT NULL,
-    urn text NOT NULL
+    internal_id bigint NOT NULL AUTO_INCREMENT,
+    urn text NOT NULL,
+    primary key(internal_id)
 );
 
 
@@ -183,11 +184,12 @@ CREATE TABLE scim_extension (
 --
 
 CREATE TABLE scim_extension_field (
-    internal_id bigint NOT NULL,
+    internal_id bigint NOT NULL AUTO_INCREMENT,
     name character varying(255),
     is_required boolean,
     type character varying(255) NOT NULL,
-    extension_internal_id bigint
+    extension_internal_id bigint,
+    primary key(internal_id)
 );
 
 
@@ -197,10 +199,11 @@ CREATE TABLE scim_extension_field (
 --
 
 CREATE TABLE scim_extension_field_value (
-    internal_id bigint NOT NULL,
+    internal_id bigint NOT NULL AUTO_INCREMENT,
     value text NOT NULL,
     extension_field_internal_id bigint NOT NULL,
-    user_internal_id bigint NOT NULL
+    user_internal_id bigint NOT NULL,
+    primary key(internal_id)
 );
 
 
@@ -232,11 +235,12 @@ CREATE TABLE scim_group_scim_id (
 --
 
 CREATE TABLE scim_id (
-    internal_id bigint NOT NULL,
+    internal_id bigint NOT NULL AUTO_INCREMENT,
     external_id character varying(255),
     id character varying(255) NOT NULL,
-    meta_id bigint
-);
+    meta_id bigint,
+    PRIMARY KEY (internal_id)
+) ;
 
 
 --
@@ -259,12 +263,13 @@ CREATE TABLE scim_im (
 --
 
 CREATE TABLE scim_meta (
-    id bigint NOT NULL,
+    id bigint NOT NULL AUTO_INCREMENT,
     created timestamp NULL,
     lastmodified timestamp NULL,
     location text,
     resourcetype character varying(255),
-    version character varying(255)
+    version character varying(255),
+    primary key(id)
 );
 
 
@@ -274,13 +279,14 @@ CREATE TABLE scim_meta (
 --
 
 CREATE TABLE scim_name (
-    id bigint NOT NULL,
+    id bigint NOT NULL AUTO_INCREMENT,
     familyname character varying(255),
     formatted text,
     givenname character varying(255),
     honorificprefix character varying(255),
     honorificsuffix character varying(255),
-    middlename character varying(255)
+    middlename character varying(255),
+    primary key(id)
 );
 
 
@@ -390,8 +396,8 @@ ALTER TABLE scim_entitlements
 -- Name: scim_extension_field_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_extension_field
-    ADD CONSTRAINT scim_extension_field_pkey PRIMARY KEY (internal_id);
+-- ALTER TABLE scim_extension_field
+--     ADD CONSTRAINT scim_extension_field_pkey PRIMARY KEY (internal_id);
 
 
 --
@@ -399,8 +405,8 @@ ALTER TABLE scim_extension_field
 -- Name: scim_extension_field_value_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_extension_field_value
-    ADD CONSTRAINT scim_extension_field_value_pkey PRIMARY KEY (internal_id);
+-- ALTER TABLE scim_extension_field_value
+--    ADD CONSTRAINT scim_extension_field_value_pkey PRIMARY KEY (internal_id);
 
 
 --
@@ -408,8 +414,8 @@ ALTER TABLE scim_extension_field_value
 -- Name: scim_extension_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_extension
-    ADD CONSTRAINT scim_extension_pkey PRIMARY KEY (internal_id);
+-- ALTER TABLE scim_extension
+--     ADD CONSTRAINT scim_extension_pkey PRIMARY KEY (internal_id);
 
 
 --
@@ -435,8 +441,8 @@ ALTER TABLE scim_group_scim_id
 -- Name: scim_id_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_id
-    ADD CONSTRAINT scim_id_pkey PRIMARY KEY (internal_id);
+-- ALTER TABLE scim_id
+--    ADD CONSTRAINT scim_id_pkey PRIMARY KEY (internal_id);
 
 
 --
@@ -453,8 +459,8 @@ ALTER TABLE scim_im
 -- Name: scim_meta_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_meta
-    ADD CONSTRAINT scim_meta_pkey PRIMARY KEY (id);
+-- ALTER TABLE scim_meta
+--    ADD CONSTRAINT scim_meta_pkey PRIMARY KEY (id);
 
 
 --
@@ -462,8 +468,8 @@ ALTER TABLE scim_meta
 -- Name: scim_name_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_name
-    ADD CONSTRAINT scim_name_pkey PRIMARY KEY (id);
+-- ALTER TABLE scim_name
+--    ADD CONSTRAINT scim_name_pkey PRIMARY KEY (id);
 
 
 --
