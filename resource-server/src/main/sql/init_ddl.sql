@@ -331,7 +331,8 @@ CREATE TABLE scim_roles (
 -- Name: scim_user; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE scim_user (
+CREATE TABLE scim_user
+ (
     active boolean,
     displayname character varying(255),
     locale character varying(255),
