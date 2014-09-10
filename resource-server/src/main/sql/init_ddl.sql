@@ -111,7 +111,7 @@
 --
 
 CREATE TABLE scim_address (
-    multi_value_id bigint NOT NULL,
+    multi_value_id bigint NOT NULL AUTO_INCREMENT,
     is_primary boolean,
     country character varying(255),
     formatted text,
@@ -120,7 +120,8 @@ CREATE TABLE scim_address (
     region character varying(255),
     streetaddress character varying(255),
     type character varying(255),
-    user_internal_id bigint NOT NULL
+    user_internal_id bigint NOT NULL,
+    primary key(multi_value_id)
 );
 
 
@@ -130,11 +131,12 @@ CREATE TABLE scim_address (
 --
 
 CREATE TABLE scim_certificate (
-    multi_value_id bigint NOT NULL,
+    multi_value_id bigint NOT NULL AUTO_INCREMENT,
     is_primary boolean,
     value text,
     type character varying(255),
-    user_internal_id bigint NOT NULL
+    user_internal_id bigint NOT NULL,
+    primary key(multi_value_id)
 );
 
 
@@ -144,11 +146,12 @@ CREATE TABLE scim_certificate (
 --
 
 CREATE TABLE scim_email (
-    multi_value_id bigint NOT NULL,
+    multi_value_id bigint NOT NULL AUTO_INCREMENT,
     is_primary boolean,
     value text,
     type character varying(255),
-    user_internal_id bigint NOT NULL
+    user_internal_id bigint NOT NULL,
+    primary key(multi_value_id)
 );
 
 
@@ -158,11 +161,12 @@ CREATE TABLE scim_email (
 --
 
 CREATE TABLE scim_entitlements (
-    multi_value_id bigint NOT NULL,
+    multi_value_id bigint NOT NULL AUTO_INCREMENT,
     is_primary boolean,
     value text,
     type character varying(255),
-    user_internal_id bigint NOT NULL
+    user_internal_id bigint NOT NULL,
+    primary key(multi_value_id)
 );
 
 
@@ -249,11 +253,12 @@ CREATE TABLE scim_id (
 --
 
 CREATE TABLE scim_im (
-    multi_value_id bigint NOT NULL,
+    multi_value_id bigint NOT NULL AUTO_INCREMENT,
     is_primary boolean,
     value text,
     type character varying(255),
-    user_internal_id bigint NOT NULL
+    user_internal_id bigint NOT NULL,
+    primary key(multi_value_id)
 );
 
 
@@ -296,11 +301,12 @@ CREATE TABLE scim_name (
 --
 
 CREATE TABLE scim_phonenumber (
-    multi_value_id bigint NOT NULL,
+    multi_value_id bigint NOT NULL AUTO_INCREMENT,
     is_primary boolean,
     value text,
     type character varying(255),
-    user_internal_id bigint NOT NULL
+    user_internal_id bigint NOT NULL,
+    primary key(multi_value_id)
 );
 
 
@@ -310,11 +316,12 @@ CREATE TABLE scim_phonenumber (
 --
 
 CREATE TABLE scim_photo (
-    multi_value_id bigint NOT NULL,
+    multi_value_id bigint NOT NULL AUTO_INCREMENT,
     is_primary boolean,
     value text,
     type character varying(255),
-    user_internal_id bigint NOT NULL
+    user_internal_id bigint NOT NULL,
+    primary key(multi_value_id)
 );
 
 
@@ -324,11 +331,12 @@ CREATE TABLE scim_photo (
 --
 
 CREATE TABLE scim_roles (
-    multi_value_id bigint NOT NULL,
+    multi_value_id bigint NOT NULL AUTO_INCREMENT,
     is_primary boolean,
     value text,
     type character varying(255),
-    user_internal_id bigint NOT NULL
+    user_internal_id bigint NOT NULL,
+    primary key(multi_value_id)
 );
 
 
@@ -360,8 +368,8 @@ CREATE TABLE scim_user
 -- Name: scim_address_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_address
-    ADD CONSTRAINT scim_address_pkey PRIMARY KEY (multi_value_id);
+-- ALTER TABLE scim_address
+--    ADD CONSTRAINT scim_address_pkey PRIMARY KEY (multi_value_id);
 
 
 --
@@ -369,8 +377,8 @@ ALTER TABLE scim_address
 -- Name: scim_certificate_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_certificate
-    ADD CONSTRAINT scim_certificate_pkey PRIMARY KEY (multi_value_id);
+-- ALTER TABLE scim_certificate
+--    ADD CONSTRAINT scim_certificate_pkey PRIMARY KEY (multi_value_id);
 
 
 --
@@ -378,8 +386,8 @@ ALTER TABLE scim_certificate
 -- Name: scim_email_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_email
-    ADD CONSTRAINT scim_email_pkey PRIMARY KEY (multi_value_id);
+-- ALTER TABLE scim_email
+--    ADD CONSTRAINT scim_email_pkey PRIMARY KEY (multi_value_id);
 
 
 --
@@ -387,8 +395,8 @@ ALTER TABLE scim_email
 -- Name: scim_entitlements_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_entitlements
-    ADD CONSTRAINT scim_entitlements_pkey PRIMARY KEY (multi_value_id);
+-- ALTER TABLE scim_entitlements
+--    ADD CONSTRAINT scim_entitlements_pkey PRIMARY KEY (multi_value_id);
 
 
 --
@@ -450,8 +458,8 @@ ALTER TABLE scim_group_scim_id
 -- Name: scim_im_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_im
-    ADD CONSTRAINT scim_im_pkey PRIMARY KEY (multi_value_id);
+-- ALTER TABLE scim_im
+--     ADD CONSTRAINT scim_im_pkey PRIMARY KEY (multi_value_id);
 
 
 --
@@ -477,8 +485,8 @@ ALTER TABLE scim_im
 -- Name: scim_phonenumber_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_phonenumber
-    ADD CONSTRAINT scim_phonenumber_pkey PRIMARY KEY (multi_value_id);
+-- ALTER TABLE scim_phonenumber
+--    ADD CONSTRAINT scim_phonenumber_pkey PRIMARY KEY (multi_value_id);
 
 
 --
@@ -486,8 +494,8 @@ ALTER TABLE scim_phonenumber
 -- Name: scim_photo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_photo
-    ADD CONSTRAINT scim_photo_pkey PRIMARY KEY (multi_value_id);
+-- ALTER TABLE scim_photo
+--    ADD CONSTRAINT scim_photo_pkey PRIMARY KEY (multi_value_id);
 
 
 --
@@ -495,8 +503,8 @@ ALTER TABLE scim_photo
 -- Name: scim_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE scim_roles
-    ADD CONSTRAINT scim_roles_pkey PRIMARY KEY (multi_value_id);
+-- ALTER TABLE scim_roles
+--    ADD CONSTRAINT scim_roles_pkey PRIMARY KEY (multi_value_id);
 
 
 --
