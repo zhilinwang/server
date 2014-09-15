@@ -14,7 +14,7 @@ CREATE TABLE scim_address (
     type character varying(255),
     user_internal_id bigint NOT NULL,
     primary key(multi_value_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 175 (class 1259 OID 108938)
@@ -27,7 +27,7 @@ CREATE TABLE scim_certificate (
     type character varying(255),
     user_internal_id bigint NOT NULL,
     primary key(multi_value_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 176 (class 1259 OID 108946)
@@ -40,7 +40,7 @@ CREATE TABLE scim_email (
     type character varying(255),
     user_internal_id bigint NOT NULL,
     primary key(multi_value_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 177 (class 1259 OID 108954)
@@ -53,7 +53,7 @@ CREATE TABLE scim_entitlements (
     type character varying(255),
     user_internal_id bigint NOT NULL,
     primary key(multi_value_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 178 (class 1259 OID 108962)
@@ -63,7 +63,7 @@ CREATE TABLE scim_extension (
     internal_id bigint NOT NULL AUTO_INCREMENT,
     urn text NOT NULL,
     primary key(internal_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 179 (class 1259 OID 108970)
@@ -76,7 +76,7 @@ CREATE TABLE scim_extension_field (
     type character varying(255) NOT NULL,
     extension_internal_id bigint,
     primary key(internal_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 180 (class 1259 OID 108978)
@@ -88,7 +88,7 @@ CREATE TABLE scim_extension_field_value (
     extension_field_internal_id bigint NOT NULL,
     user_internal_id bigint NOT NULL,
     primary key(internal_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 181 (class 1259 OID 108986)
@@ -97,7 +97,7 @@ CREATE TABLE scim_extension_field_value (
 CREATE TABLE scim_group (
     displayname character varying(255) NOT NULL,
     internal_id bigint NOT NULL
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 182 (class 1259 OID 108991)
@@ -106,7 +106,7 @@ CREATE TABLE scim_group (
 CREATE TABLE scim_group_scim_id (
     groups_internal_id bigint NOT NULL,
     members_internal_id bigint NOT NULL
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 183 (class 1259 OID 108996)
@@ -118,7 +118,7 @@ CREATE TABLE scim_id (
     id character varying(255) NOT NULL,
     meta_id bigint,
     PRIMARY KEY (internal_id)
-) ;
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 184 (class 1259 OID 109004)
@@ -131,7 +131,7 @@ CREATE TABLE scim_im (
     type character varying(255),
     user_internal_id bigint NOT NULL,
     primary key(multi_value_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 185 (class 1259 OID 109012)
@@ -145,7 +145,7 @@ CREATE TABLE scim_meta (
     resourcetype character varying(255),
     version character varying(255),
     primary key(id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 186 (class 1259 OID 109020)
@@ -160,7 +160,7 @@ CREATE TABLE scim_name (
     honorificsuffix character varying(255),
     middlename character varying(255),
     primary key(id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 187 (class 1259 OID 109028)
@@ -173,7 +173,7 @@ CREATE TABLE scim_phonenumber (
     type character varying(255),
     user_internal_id bigint NOT NULL,
     primary key(multi_value_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 188 (class 1259 OID 109036)
@@ -186,7 +186,7 @@ CREATE TABLE scim_photo (
     type character varying(255),
     user_internal_id bigint NOT NULL,
     primary key(multi_value_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 189 (class 1259 OID 109044)
@@ -199,7 +199,7 @@ CREATE TABLE scim_roles (
     type character varying(255),
     user_internal_id bigint NOT NULL,
     primary key(multi_value_id)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 190 (class 1259 OID 109052)
@@ -220,7 +220,7 @@ CREATE TABLE scim_user
     usertype character varying(255),
     internal_id bigint NOT NULL,
     name_id bigint
-);
+) ENGINE=InnoDB;
 --
 -- TOC entry 2234 (class 2606 OID 108990)
 -- Name: scim_group_pkey; Type: CONSTRAINT; Schema: public; Owner: -

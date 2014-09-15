@@ -3,7 +3,7 @@
 -- Dependencies: 5
 -- Name: osiam_client; Type: TABLE; Schema: public; Owner: -
 --
-CREATE TABLE osiam_client (
+CREATE TABLE osiam_client1 (
     internal_id bigint NOT NULL AUTO_INCREMENT,
     accesstokenvalidityseconds integer NOT NULL,
     client_secret character varying(255) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE osiam_client (
     refreshtokenvalidityseconds integer NOT NULL,
     validityinseconds bigint NOT NULL,
     primary key (internal_id)
-);
+) ENGINE=InnoDB;
 
 ALTER TABLE osiam_client AUTO_INCREMENT = 100;
 
@@ -24,7 +24,7 @@ ALTER TABLE osiam_client AUTO_INCREMENT = 100;
 CREATE TABLE osiam_client_grants (
     id bigint NOT NULL,
     grants character varying(255)
-);
+) ENGINE=InnoDB;
 
 --
 -- TOC entry 164 (class 1259 OID 34636)
@@ -34,7 +34,7 @@ CREATE TABLE osiam_client_grants (
 CREATE TABLE osiam_client_scopes (
     id bigint NOT NULL,
     scope character varying(255)
-);
+) ENGINE=InnoDB;
 
 -- TOC entry 1908 (class 2606 OID 34788)
 -- Dependencies: 162 162 2111
