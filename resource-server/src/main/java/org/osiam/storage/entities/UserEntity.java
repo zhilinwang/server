@@ -26,7 +26,14 @@ package org.osiam.storage.entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Type;
@@ -41,7 +48,6 @@ import com.google.common.collect.ImmutableSet;
 public class UserEntity extends ResourceEntity {
 
     public static final String JOIN_COLUMN_NAME = "user_internal_id";
-    private static final int BATCH_SIZE = 100;
 
     @Column(nullable = false, unique = true)
     private String userName;
@@ -72,6 +78,7 @@ public class UserEntity extends ResourceEntity {
 
     private String displayName;
 
+    private static final int BATCH_SIZE = 100;
     @BatchSize(size = BATCH_SIZE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = JOIN_COLUMN_NAME, nullable = false)
@@ -130,7 +137,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param name
-     *        the name entity
+     *            the name entity
      */
     public void setName(NameEntity name) {
         this.name = name;
@@ -145,7 +152,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param nickName
-     *        the nick name
+     *            the nick name
      */
     public void setNickName(String nickName) {
         this.nickName = nickName;
@@ -160,7 +167,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param profileUrl
-     *        the profile url
+     *            the profile url
      */
     public void setProfileUrl(String profileUrl) {
         this.profileUrl = profileUrl;
@@ -175,7 +182,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param title
-     *        the title
+     *            the title
      */
     public void setTitle(String title) {
         this.title = title;
@@ -190,7 +197,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param userType
-     *        the user type
+     *            the user type
      */
     public void setUserType(String userType) {
         this.userType = userType;
@@ -205,7 +212,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param preferredLanguage
-     *        the preferred languages
+     *            the preferred languages
      */
     public void setPreferredLanguage(String preferredLanguage) {
         this.preferredLanguage = preferredLanguage;
@@ -220,7 +227,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param locale
-     *        the locale
+     *            the locale
      */
     public void setLocale(String locale) {
         this.locale = locale;
@@ -235,7 +242,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param timezone
-     *        the timezone
+     *            the timezone
      */
     public void setTimezone(String timezone) {
         this.timezone = timezone;
@@ -250,7 +257,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param active
-     *        the active status
+     *            the active status
      */
     public void setActive(Boolean active) {
         this.active = active;
@@ -265,7 +272,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param password
-     *        the password
+     *            the password
      */
     public void setPassword(String password) {
         this.password = password;
@@ -286,7 +293,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * @param userName
-     *        the user name
+     *            the user name
      */
     public void setUserName(String userName) {
         this.userName = userName;
@@ -294,7 +301,7 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Returns an immutable view of the list of emails
-     *
+     * 
      * @return the emails entity
      */
     public Set<EmailEntity> getEmails() {
@@ -303,9 +310,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Adds a new email to this user
-     *
+     * 
      * @param email
-     *        the email to add
+     *            the email to add
      */
     public void addEmail(EmailEntity email) {
         emails.add(email);
@@ -313,9 +320,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Removes the given email from this user
-     *
+     * 
      * @param email
-     *        the email to remove
+     *            the email to remove
      */
     public void removeEmail(EmailEntity email) {
         emails.remove(email);
@@ -334,34 +341,34 @@ public class UserEntity extends ResourceEntity {
     public Set<ExtensionFieldValueEntity> getExtensionFieldValues() {
         return extensionFieldValues;
     }
-
+    
     /**
      * Adds a new extensionFieldValue to this user
-     *
+     * 
      * @param extensionFieldValue
-     *        the extensionFieldValue to add
+     *            the extensionFieldValue to add
      */
     public void addExtensionFieldValue(ExtensionFieldValueEntity extensionFieldValue) {
         extensionFieldValues.add(extensionFieldValue);
     }
-
+    
     /**
      * Removes the given extensionFieldValue from this user
-     *
+     * 
      * @param extensionFieldValue
-     *        the extensionFieldValue to remove
+     *            the extensionFieldValue to remove
      */
     public void removeExtensionFieldValue(ExtensionFieldValueEntity extensionFieldValue) {
         extensionFieldValues.remove(extensionFieldValue);
     }
-
+    
     /**
      * Removes all extensionFieldValues from this user
      */
     public void removeAllExtensionFieldValues(String urn) {
         ImmutableSet<ExtensionFieldValueEntity> fields = ImmutableSet.copyOf(extensionFieldValues);
         for (ExtensionFieldValueEntity extensionFieldValue : fields) {
-            if (extensionFieldValue.getExtensionField().getExtension().getUrn().equals(urn)) {
+            if(extensionFieldValue.getExtensionField().getExtension().getUrn().equals(urn)) {
                 extensionFieldValues.remove(extensionFieldValue);
             }
         }
@@ -370,22 +377,24 @@ public class UserEntity extends ResourceEntity {
     /**
      * Adds or updates an extension field value for this User. When updating, the old value of the extension field is
      * removed from this user and the new one will be added.
-     *
+     * 
      * @param extensionValue
-     *        The extension field value to add or update
+     *            The extension field value to add or update
      */
     public void addOrUpdateExtensionValue(ExtensionFieldValueEntity extensionValue) {
         if (extensionValue == null) {
             throw new IllegalArgumentException("extensionValue must not be null");
         }
-
+        
         if (extensionFieldValues.contains(extensionValue)) {
             extensionFieldValues.remove(extensionValue);
         }
-
+        
         extensionFieldValues.add(extensionValue);
     }
-
+    
+    
+    
     /**
      * @return the phone numbers entity
      */
@@ -395,9 +404,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Adds a new phoneNumber to this user
-     *
+     * 
      * @param phoneNumber
-     *        the phoneNumnber to add
+     *            the phoneNumnber to add
      */
     public void addPhoneNumber(PhoneNumberEntity phoneNumber) {
         phoneNumbers.add(phoneNumber);
@@ -405,9 +414,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Removes the given phoneNumber from this user
-     *
+     * 
      * @param phoneNumber
-     *        the phoneNumber to remove
+     *            the phoneNumber to remove
      */
     public void removePhoneNumber(PhoneNumberEntity phoneNumber) {
         phoneNumbers.remove(phoneNumber);
@@ -429,9 +438,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Adds a new im to this user
-     *
+     * 
      * @param im
-     *        the im to add
+     *            the im to add
      */
     public void addIm(ImEntity im) {
         ims.add(im);
@@ -439,9 +448,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Removes the given im from this user
-     *
+     * 
      * @param im
-     *        the im to remove
+     *            the im to remove
      */
     public void removeIm(ImEntity im) {
         ims.remove(im);
@@ -463,9 +472,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Adds a new photo to this user
-     *
+     * 
      * @param photo
-     *        the photo to add
+     *            the photo to add
      */
     public void addPhoto(PhotoEntity photo) {
         photos.add(photo);
@@ -473,9 +482,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Removes the given photo from this user
-     *
+     * 
      * @param photo
-     *        the photo to remove
+     *            the photo to remove
      */
     public void removePhoto(PhotoEntity photo) {
         photos.remove(photo);
@@ -497,9 +506,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Adds a new address to this user
-     *
+     * 
      * @param address
-     *        the address to add
+     *            the address to add
      */
     public void addAddress(AddressEntity address) {
         addresses.add(address);
@@ -507,9 +516,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Removes the given address from this user
-     *
+     * 
      * @param address
-     *        the address to remove
+     *            the address to remove
      */
     public void removeAddress(AddressEntity address) {
         addresses.remove(address);
@@ -531,9 +540,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Adds a new entitlement to this user
-     *
+     * 
      * @param entitlement
-     *        the entitlement to add
+     *            the entitlement to add
      */
     public void addEntitlement(EntitlementEntity entitlement) {
         entitlements.add(entitlement);
@@ -541,9 +550,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Removes the given entitlement from this user
-     *
+     * 
      * @param entitlement
-     *        the entitlement to remove
+     *            the entitlement to remove
      */
     public void removeEntitlement(EntitlementEntity entitlement) {
         entitlements.remove(entitlement);
@@ -565,9 +574,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Adds a new role to this user
-     *
+     * 
      * @param role
-     *        the role to add
+     *            the role to add
      */
     public void addRole(RoleEntity role) {
         roles.add(role);
@@ -575,9 +584,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Removes the given role from this user
-     *
+     * 
      * @param role
-     *        the role to remove
+     *            the role to remove
      */
     public void removeRole(RoleEntity role) {
         roles.remove(role);
@@ -599,9 +608,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Adds a new x509Certificate to this user
-     *
+     * 
      * @param x509Certificate
-     *        the x509Certificate to add
+     *            the x509Certificate to add
      */
     public void addX509Certificate(X509CertificateEntity x509Certificate) {
         x509Certificates.add(x509Certificate);
@@ -609,9 +618,9 @@ public class UserEntity extends ResourceEntity {
 
     /**
      * Removes the given x509Certificate from this user
-     *
+     * 
      * @param x509Certificate
-     *        the x509Certificate to remove
+     *            the x509Certificate to remove
      */
     public void removeX509Certificate(X509CertificateEntity x509Certificate) {
         x509Certificates.remove(x509Certificate);
