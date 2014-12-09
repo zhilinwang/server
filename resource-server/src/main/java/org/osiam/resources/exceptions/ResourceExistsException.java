@@ -34,6 +34,10 @@ public class ResourceExistsException extends OsiamException {
         super(s);
     }
 
+    public ResourceExistsException(ExceptionType type, String errorMessage) {
+        super(EnrichedExceptionMessageSerializer.serialize(new EnrichedExceptionMessage(errorMessage, type)));
+    }
+
     public ResourceExistsException(String s, Throwable cause) {
         super(s, cause);
     }

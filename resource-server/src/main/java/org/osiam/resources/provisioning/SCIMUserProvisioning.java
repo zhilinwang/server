@@ -33,10 +33,11 @@ import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceException;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.osiam.resources.converter.UserConverter;
+import org.osiam.resources.exceptions.EnrichedExceptionMessage;
+import org.osiam.resources.exceptions.EnrichedExceptionMessageSerializer;
+import org.osiam.resources.exceptions.ExceptionType;
 import org.osiam.resources.exceptions.ResourceExistsException;
 import org.osiam.resources.exceptions.ResourceNotFoundException;
 import org.osiam.resources.provisioning.update.UserUpdater;
@@ -46,15 +47,9 @@ import org.osiam.resources.scim.User;
 import org.osiam.storage.dao.SearchResult;
 import org.osiam.storage.dao.UserDao;
 import org.osiam.storage.entities.UserEntity;
-import org.osiam.storage.parser.LogicalOperatorRulesLexer;
-import org.osiam.storage.parser.LogicalOperatorRulesParser;
-import org.osiam.storage.query.EvalVisitor;
-import org.osiam.storage.query.OsiamAntlrErrorListener;
 import org.osiam.storage.query.QueryFilterParser;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.google.common.base.Strings;
 
 @Service
 public class SCIMUserProvisioning implements SCIMProvisioning<User> {
@@ -72,7 +67,7 @@ public class SCIMUserProvisioning implements SCIMProvisioning<User> {
 
     @Inject
     private UserUpdater userUpdater;
-    
+
     @Inject
     private QueryFilterParser queryFilterParser;
 
@@ -96,7 +91,7 @@ public class SCIMUserProvisioning implements SCIMProvisioning<User> {
     @Override
     public User create(User user) {
         if (userDao.isUserNameAlreadyTaken(user.getUserName())) {
-            throw new ResourceExistsException(String.format(
+            throw new ResourceExistsException(ExceptionType.USERNAME_NOT_UNIQUE, String.format(
                     "Can't create a user. The username \"%s\" is already taken.", user.getUserName()));
         }
         if (userDao.isExternalIdAlreadyTaken(user.getExternalId())) {
@@ -177,7 +172,7 @@ public class SCIMUserProvisioning implements SCIMProvisioning<User> {
     }
 
     private void sleepIfForPasswordWasSearched(ParseTree tree) {
-        if(tree == null){
+        if (tree == null) {
             return;
         }
         String leaf = tree.getText();
